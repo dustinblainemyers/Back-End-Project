@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-    // store: new FileStore(),
+    store: new FileStore(),
     secret: 'get rad',
     resave: false,
     saveUninitialized: true,
