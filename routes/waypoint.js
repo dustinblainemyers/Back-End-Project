@@ -4,32 +4,48 @@ const router = express.Router();
 var multer = require('multer');
 var upload = multer({dest:'test'});
 var ba64 = require("ba64")
+const mountainModel = require('../models/mountains');
 
 
-router.get('/', async (req, res, next) => {
-    
-  
-    res.render('template', { 
-      locals: {
-        title: 'Create a Route',
-        is_logged_in: req.session.is_logged_in,
-        first_name: req.session.first_name
-        
-        
-      },
-      partials: {
-        partial: 'partial-create-route'
-      }
-    });
+
+router.get('/:id', async function(req, res, next) {
+  const {
+    id, 
+} = req.params;
+const mountainData = await mountainModel.getMountainById(id);
+
+  res.render('template', { 
+    locals: {
+      title: `  | Create a Route`,
+      mountainData: mountainData,
+      is_logged_in: req.session.is_logged_in,
+      climber_id: req.session.climber_id
+    },
+    partials: {
+      partial: 'partial-create-route'
+    }
   });
+});
+
+    
 
 
-  router.post('/upload', function(req, res, next){
+  router.post('/upload', async function(req, res, next){
+    
+
+    try {
     const { myinput } = req.body;
     const {name} = req.body;
     console.log("encoded",myinput);
     const data_url = myinput
-    ba64.writeImageSync(`public/images/${name}`, data_url);
+    await ba64.writeImageSync(`public/images/${name}`, data_url);
+    await res.redirect('/mountains/');
+    }
+
+    catch {
+
+    res.status(404)
+    }
 
   })
 
