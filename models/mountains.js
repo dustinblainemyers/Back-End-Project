@@ -1,11 +1,12 @@
 const db = require('./conn');
 
 class MountainModel {
-  constructor(id, name, distance, location) {
+  constructor(id, name, distance, location, image) {
     this.id = id;
     this.name = name;
     this.distance = distance;
     this.location = location;
+    this.image = image;
   }
 
   static async getAllMountains() {
@@ -30,15 +31,7 @@ class MountainModel {
     }
   }
 
-  static async getMountainName(m_id) {
-    try {
-      const response = await db.one(`SELECT name FROM mountain WHERE id = $1`, m_id);
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.log('ERROR: ', error);
-    }
-  }
+
 
   static async getReviewDetails(m_id) {
     try {
