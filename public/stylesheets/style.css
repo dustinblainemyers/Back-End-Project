@@ -225,12 +225,13 @@ input {
   flex-wrap: wrap;
   position: relative;
   top: 110px;
-  left: 55px;
+  left: 110px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
 
 }
+
 
 .card-img-top {
 
@@ -251,11 +252,59 @@ input {
 .loggedOutStatementText {
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
   font-style: italic;
   position: relative;
-  top: 50px;
+  top: 10px;
+
+}
+
+#canvas {
+
+  position: relative;
+  left: 610px;
+  top: 80px;
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  display: inline-block;
+  
+
+}
+
+.createRouteInput {
+
+  position: relative;
+  top: 100px;
+  right: 20px;
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  display: inline-block;
+
+}
+
+#submit {
+
+  position: relative;
+  top: 150px;
+  right: 90px;
+  border-color: black;
+  border-width: 3px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+#submit2 {
+
+  position: relative;
+  top: 132px;
+  left: 390px;
+  border-radius: 10px;
+  border-color: black;
+  border-width: 3px;
+  display: inline-block;
 
 }
 
