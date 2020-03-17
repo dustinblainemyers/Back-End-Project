@@ -19,7 +19,8 @@ const mountainData = await mountainModel.getMountainById(id);
       title: `  | Create a Route`,
       mountainData: mountainData,
       is_logged_in: req.session.is_logged_in,
-      climber_id: req.session.climber_id
+      climber_id: req.session.climber_id,
+      id: id
     },
     partials: {
       partial: 'partial-create-route'
@@ -34,9 +35,14 @@ const mountainData = await mountainModel.getMountainById(id);
     
 
     try {
+    const {mountain_id} = req.body;
+    const { climber_id } = req.body;
     const { myinput } = req.body;
+    console.log("climber id",climber_id);
+    console.log("mountain id", mountain_id);
+
     const {name} = req.body;
-    console.log("encoded",myinput);
+    
     const data_url = myinput
     await ba64.writeImageSync(`public/images/${name}`, data_url);
     await res.redirect('/mountains/');
