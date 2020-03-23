@@ -21,6 +21,8 @@ router.get('/', async (req, res, next) => {
 
 res.json(data);
 
+});
+
 router.get('/:id?', async (req, res) => {
 
   const {
